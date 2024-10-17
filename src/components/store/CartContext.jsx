@@ -55,7 +55,7 @@ export function CartContextProvider({children}) {
     }
 
     function removeItem(id) {
-        dispatchCartAction({type: 'ADD ITEM' , id: id});
+        dispatchCartAction({type: 'REMOVE ITEM' , id: id});
     }
 
     const cartContext = {
