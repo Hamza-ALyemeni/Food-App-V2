@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect , useState} from "react";
 
 async function sendHttpRequest(url,config) {
    const response = await fetch(url,config);
@@ -15,7 +15,7 @@ async function sendHttpRequest(url,config) {
 }
 
 export default function useHttp(url,config) {
-    const [data , setData] = useState(); 
+    const [data , setData] = useState([]); 
     const [error , setError] = useState(); 
     const [loading , setLoading] = useState(false); 
 
@@ -23,6 +23,7 @@ export default function useHttp(url,config) {
         setLoading(true);
         try {
             const resData = sendHttpRequest(url,config);
+            setData(resData);
         } catch (error) {
             setError(error.message || 'Something went wrong !');
         }
